@@ -5,6 +5,10 @@
 }
 
 static double Price(int quantity) {
+    if (quantity >= 100) {
+        return quantity * 2.4;
+    }
+
     return quantity * 2;
 }
 
