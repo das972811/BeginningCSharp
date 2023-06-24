@@ -1,0 +1,3 @@
+﻿using TreehouseDefense;
+
+Game.Run();
