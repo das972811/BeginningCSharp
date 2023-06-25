@@ -4,8 +4,10 @@ namespace TreehouseDefense
     {
         public static void Run()
         {
-            Tower tower = new Tower();
-            Map map = new Map(50, 50);
+            Map map = new Map(8, 5);
+            Point point = new Point(4, 2);
+            
+            Console.WriteLine(point.DistanceTo(5, 5));
         }
     }
 }
