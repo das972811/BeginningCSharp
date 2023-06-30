@@ -1,2 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using AddressBook.Model;
+
+Human ignacio = new Human("Ignacio", "Gothard", 21, 'M');
+ignacio.Print();
