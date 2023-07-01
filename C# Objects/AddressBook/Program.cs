@@ -1,4 +1,4 @@
 ﻿using AddressBook.Model;
 
-Human ignacio = new Human("Ignacio", "Gothard", 21, 'M');
-ignacio.Print();
+AddressCatalog addressBook = new AddressCatalog(PeopleCatalog.People);
+addressBook.People[0].Print();

@@ -1,15 +1,18 @@
 namespace AddressBook.Model
 {
-    public class Person : Human
+    class Person : Human
     {
-        public string MailingAddress { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public int PostalCode { get; set; }
+        public Address Address { get; private set; }
 
-        public Person() : base()
+        public Person(string firstName, string lastName, int age, char gender, Address address) :
+                    base(firstName, lastName, age, gender)
+                    => Address = address;
+        
+        public new void Print()
         {
-
+            base.Print();
+            Console.WriteLine();
+            Address.Print();
         }
     }
 }
