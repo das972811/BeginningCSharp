@@ -1,4 +1,25 @@
 ﻿using AddressBook.Model;
+using AddressBook.Utils;
 
-AddressCatalog addressBook = new AddressCatalog(PeopleCatalog.People);
-addressBook.People[0].Print();
+try
+{
+    AddressCatalog addressBook = new AddressCatalog(PeopleCatalog.People);
+    var person = addressBook.SearchFor("Gothard");
+
+    if (person is not null)
+    {
+        person.Print();
+    }
+}
+catch (OutOfBoundsAddressException ex)
+{
+    Console.WriteLine(ex);
+}
+catch (AddressBookException ex)
+{
+    Console.WriteLine(ex.Message);
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
