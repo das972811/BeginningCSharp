@@ -4,8 +4,23 @@ using AddressBook.Utils;
 try
 {
     AddressCatalog addressBook = new AddressCatalog(PeopleCatalog.People);
-    var person = addressBook.SearchFor("Gothard");
+    Person p = new Person(
+        "Teresa Diego Salas lkjfalkdjkfl",
+        "Polar",
+        50,
+        'F',
+        new Address(
+            "2844 Gaslight Ln S",
+            "Mobile",
+            "AL",
+            "36695"
+        )
+    );
 
+    addressBook.Add(p);
+    addressBook.PrintAll();
+
+    var person = addressBook.SearchFor("Gothard");
     if (person is not null)
     {
         person.Print();
