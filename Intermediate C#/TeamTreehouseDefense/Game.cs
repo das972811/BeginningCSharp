@@ -23,19 +23,19 @@ namespace TreehouseDefense
                     }
                 );
 
-                MapLocation location = new MapLocation(0, 2, map);
-                if (path.IsOnPath(location))
-                {
-                    Console.WriteLine(location + " is on the path");
-                    return;
-                }
+                // MapLocation location = new MapLocation(0, 2, map);
+                // if (path.IsOnPath(location))
+                // {
+                //     Console.WriteLine(location + " is on the path");
+                //     return;
+                // }
                 
                 Invader[] invaders = 
                 {
                     new ShieldedInvader(path),
                     new FastInvader(path),
                     new StrongInvader(path),
-                    new Invader(path)
+                    new BasicInvader(path)
                 };
                 
                 Tower[] towers = {

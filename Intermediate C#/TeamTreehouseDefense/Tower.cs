@@ -22,9 +22,9 @@ namespace TreehouseDefense
             return _random.NextDouble() < Accuracy;
         }
         
-        public void FireOnInvaders(Invader[] invaders)
+        public void FireOnInvaders(IInvader[] invaders)
         {
-            foreach(Invader invader in invaders)
+            foreach(IInvader invader in invaders)
             {
                 if(invader.IsActive && _location.InRangeOf(invader.Location, Range))
                 {
