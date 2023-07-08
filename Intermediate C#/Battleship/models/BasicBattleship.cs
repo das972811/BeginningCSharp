@@ -5,7 +5,7 @@ namespace Battleship.Models
         public override int Health { get; protected set; } = 4;
         public override int Size { get; } = 4;
 
-        public BasicBattleShip()
+        public BasicBattleShip(Position position) : base(position)
         {
         }
     }
