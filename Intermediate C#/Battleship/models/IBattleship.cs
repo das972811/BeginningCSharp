@@ -5,8 +5,8 @@ interface IMappable
     Position Position { get; }
 }
 
-interface IBattleship
+interface IBattleship : IMappable
 {
     bool IsNeutralized { get; }
-    public void DecreaseHealth(int factor);
+    public void DecreaseHealth();
 }

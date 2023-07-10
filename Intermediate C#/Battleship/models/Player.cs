@@ -7,17 +7,20 @@ class Player
 
     public bool Attack(Point point, IBattleship[] battleships)
     {
-        foreach (Battleship battleship in battleships)
+        foreach (IBattleship battleship in battleships)
         {
             foreach (Point _point in  battleship.Position.Location)
             {
                 if (point.Equals(_point))
                 {
-                    Console.WriteLine("Hit a Battleship");
+                    Console.WriteLine("Hit a " + battleship);
+                    battleship.DecreaseHealth();
                     return true;
                 }
             }
         }
+
+        Console.WriteLine("Missed");
         return false;
     }
 }

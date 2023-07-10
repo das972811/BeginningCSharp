@@ -7,37 +7,70 @@ class Program
     static void Main(string[] args)
     {
         Map map = new Map(10, 10);
+        IBattleship[] DiegoBattleships;
+        IBattleship[] IgnacioBattleships;
 
-        BasicBattleShip battleship = new BasicBattleShip
-        (
-            new Position
+        DiegoBattleships = new IBattleship[]
+        {
+            new Destroyer
             (
-                new Point[]
-                {
-                    new Point(1, 1),
-                    new Point(1, 2),
-                    new Point(1, 3),
-                    new Point(1, 4)
-                }
-            )
-        );
-
-        BasicBattleShip battleShip2 = new BasicBattleShip
-        (
-            new Position
+                new Position
+                (
+                    new Point[]
+                    {
+                        new Point(2, 2),
+                        new Point(2, 3),
+                        new Point(2, 4)
+                    }
+                )
+            ),
+            new BasicBattleShip
             (
-                new Point[]
-                {
-                    new Point(2, 2),
-                    new Point(2, 3)
-                }
+                new Position
+                (
+                    new Point[]
+                    {
+                        new Point(1, 1),
+                        new Point(1, 2),
+                        new Point(1, 3),
+                        new Point(1, 4)
+                    }
+                )
             )
-        );
+        };
 
-        IBattleship[] battleships = {battleship};
-        IBattleship[] igancioBattleships = {battleShip2};
+        IgnacioBattleships = new IBattleship[]
+        {
+            new PatrolBoat
+            (
+                new Position
+                (
+                    new Point[]
+                    {
+                        new Point(4, 5),
+                        new Point(4, 6)
+                    }
+                )
+            ),
+            new BasicBattleShip
+            (
+                new Position
+                (
+                    new Point[]
+                    {
+                        new Point(6, 2),
+                        new Point(6, 3),
+                        new Point(6, 4),
+                        new Point(6, 5),
+                    }
+                )
+            )
+        };
 
-        Player player = new Player(battleships);
-        player.Attack(new Point(2, 2), igancioBattleships);
+        Player diego = new Player(DiegoBattleships);
+        Player ignacio = new Player(IgnacioBattleships);
+
+        diego.Attack(new Point(6, 4), ignacio.Battleships);
+
     }
 }

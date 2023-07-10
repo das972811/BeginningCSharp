@@ -4,9 +4,11 @@ namespace Battleship.Models
     {
         private readonly Position _position;
 
-        public abstract int Health { get; protected set; }
         public abstract int Size { get; }
-        public bool IsNeutralized { get => Health <= 0; }
+        public abstract int Health { get; protected set; }
+
+        // public bool IsNeutralized { get => Health == 0; }
+        public bool IsNeutralized => Health == 0;
         public Position Position { get => _position; }
 
         public Battleship(Position position)
@@ -14,7 +16,11 @@ namespace Battleship.Models
             _position = position;
         }
 
-        public virtual void DecreaseHealth(int factor) => Health -= factor;
+        public virtual void DecreaseHealth() => Health--;
 
+        public override string ToString()
+        {
+            return this.GetType().Name;
+        }
     }
 }
