@@ -3,6 +3,7 @@ namespace Battleship.Models;
 class Player
 {
     public IBattleship[] Battleships { get; }
+    public Point InputtedPoint { get; private set; } = new Point();
     public Player(IBattleship[] battleships) => Battleships = battleships;
 
     public bool Attack(Point point, IBattleship[] battleships)
@@ -22,6 +23,7 @@ class Player
                 {
                     Console.WriteLine("Hit a " + battleship);
                     battleship.DecreaseHealth();
+                    
                     return true;
                 }
             }
@@ -46,7 +48,7 @@ class Player
         return sinkingShip == Battleships.Length;
     }
 
-    public Point GetUserPoint()
+    public void GetUserPoint()
     {
         int x, y;
 
@@ -58,6 +60,6 @@ class Player
         y = Convert.ToInt32(Console.ReadLine());
     
 
-        return new Point(x, y);
+        InputtedPoint = new Point(x, y);
     }
 }

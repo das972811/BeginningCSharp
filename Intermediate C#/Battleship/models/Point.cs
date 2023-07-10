@@ -7,6 +7,8 @@ namespace Battleship.Models
 
         public Point(int x, int y) => (X, Y) = (x, y);
 
+        public Point() { }
+
         public override bool Equals(object? obj)
         {
             if (obj is null || obj is not Point)
