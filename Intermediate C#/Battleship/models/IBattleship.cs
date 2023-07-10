@@ -7,6 +7,7 @@ interface IMappable
 
 interface IBattleship : IMappable
 {
+    Guid ID { get; }
     bool IsNeutralized { get; }
     public void DecreaseHealth();
 }

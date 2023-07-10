@@ -7,8 +7,15 @@ class Player
 
     public bool Attack(Point point, IBattleship[] battleships)
     {
-        foreach (IBattleship battleship in battleships)
+        for (int i = 0; i < battleships.Length; i++)
         {
+            IBattleship battleship = battleships[i];
+
+            if (battleship.IsNeutralized)
+            {
+                continue;
+            }
+
             foreach (Point _point in  battleship.Position.Location)
             {
                 if (point.Equals(_point))
@@ -22,5 +29,20 @@ class Player
 
         Console.WriteLine("Missed");
         return false;
+    }
+
+    public bool HasLose()
+    {
+        int sinkingShip = 0;
+
+        foreach (IBattleship battleship in Battleships)
+        {
+            if (battleship.IsNeutralized)
+            {
+                sinkingShip++;
+            }
+        }
+
+        return sinkingShip == Battleships.Length;
     }
 }

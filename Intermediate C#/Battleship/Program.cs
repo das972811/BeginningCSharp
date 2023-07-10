@@ -69,8 +69,8 @@ class Program
 
         Player diego = new Player(DiegoBattleships);
         Player ignacio = new Player(IgnacioBattleships);
-
-        diego.Attack(new Point(6, 4), ignacio.Battleships);
-
+        
+        Level level = new Level(diego, ignacio);
+        level.Play();
     }
 }
