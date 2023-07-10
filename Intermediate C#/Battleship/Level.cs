@@ -14,6 +14,9 @@ class Level
 
     public void Play()
     {
-        return;
+        Point point = _player1.GetUserPoint();
+        // while (_player1.HasLose() || _player2.HasLose())
+        // {
+        // }
     }
 }

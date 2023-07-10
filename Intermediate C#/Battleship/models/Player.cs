@@ -45,4 +45,19 @@ class Player
 
         return sinkingShip == Battleships.Length;
     }
+
+    public Point GetUserPoint()
+    {
+        int x, y;
+
+        Console.WriteLine("Please enter a coordinate position");
+        Console.Write("X value: ");
+        x = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("Y value: ");
+        y = Convert.ToInt32(Console.ReadLine());
+    
+
+        return new Point(x, y);
+    }
 }
