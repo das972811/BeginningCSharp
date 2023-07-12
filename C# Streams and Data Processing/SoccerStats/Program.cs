@@ -48,6 +48,33 @@ class Program
                     gameResult.HomeOrAway = homeOrAway;
                 }
 
+                int parseInt;
+                if (int.TryParse(values[3], out parseInt))
+                {
+                    gameResult.Goals = parseInt;
+                }
+
+                if (int.TryParse(values[4], out parseInt))
+                {
+                    gameResult.GoalAttempt = parseInt;
+                }
+
+                if (int.TryParse(values[5], out parseInt))
+                {
+                    gameResult.ShotsOnGoal = parseInt;
+                }
+
+                if (int.TryParse(values[5], out parseInt))
+                {
+                    gameResult.ShotsOfGoal = parseInt;
+                }
+
+                double possessionPercent;
+                if (double.TryParse(values[6], out possessionPercent))
+                {
+                    gameResult.PossessionPercent = possessionPercent;
+                }
+
                 soccerResult.Add(gameResult);
             }
         }
