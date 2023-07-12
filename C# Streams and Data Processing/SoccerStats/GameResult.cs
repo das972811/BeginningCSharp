@@ -10,6 +10,11 @@ public class GameResult
     public int ShotsOnGoal { get; set; }
     public int ShotsOfGoal { get; set; }
     public double PossessionPercent { get; set; }
+    public double ConversionRate {
+        get {
+            return (double) Goals / (double) GoalAttempt;
+        }
+    }
 }
 
 public enum HomeOrAway
