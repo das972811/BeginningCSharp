@@ -21,9 +21,9 @@ class Program
             return reader.ReadToEnd();
         }
     }
-    public static List<string[]> ReadSoccerResults(string fileName)
+    public static List<GameResult> ReadSoccerResults(string fileName)
     {
-        var soccerResult = new List<string[]>();
+        var soccerResult = new List<GameResult>();
 
         using (var reader = new StreamReader(fileName))
         {
@@ -33,12 +33,22 @@ class Program
             {
                 var gameResult = new GameResult();
                 string[] values = line.Split(',');
+
                 DateTime gameDate;
                 if (DateTime.TryParse(values[0], out gameDate))
                 {
                     gameResult.GameDate = gameDate;
                 }
-                soccerResult.Add(values);
+
+                gameResult.TeamName = values[1];
+                
+                HomeOrAway homeOrAway;
+                if (Enum.TryParse(values[2], out homeOrAway))
+                {
+                    gameResult.HomeOrAway = homeOrAway;
+                }
+
+                soccerResult.Add(gameResult);
             }
         }
 
