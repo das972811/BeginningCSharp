@@ -75,8 +75,6 @@ class Program
                     gameResult.PossessionPercent = possessionPercent;
                 }
 
-                // gameResult.ConversionRate = (double) gameResult.Goals / gameResult.GoalAttempt;
-
                 soccerResult.Add(gameResult);
             }
         }
