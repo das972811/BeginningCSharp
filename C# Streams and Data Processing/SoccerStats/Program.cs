@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using Newtonsoft.Json;
 
 namespace SoccerStats;
 
@@ -11,7 +12,16 @@ class Program
         var fileName = Path.Combine(directory.FullName, "SoccerGameResults.csv");
         var fileContents = ReadSoccerResults(fileName);
 
-        Console.WriteLine(fileContents);
+        fileName = Path.Combine(directory.FullName, "players.json");
+
+        var players = DeserializePlayers(fileName);
+
+        foreach (var player in players)
+        {
+            Console.WriteLine(player.second_name);
+        }
+
+        // Console.WriteLine(fileContents);
     }
 
     public static string ReadFile(string fileName)
@@ -80,6 +90,20 @@ class Program
         }
 
         return soccerResult;
+    }
+
+    public static List<Player> DeserializePlayers(string fileName)
+    {
+        var players = new List<Player>();
+        var serializer = new JsonSerializer();
+
+        using(var reader = new StreamReader(fileName))
+        using(var jsonReader = new JsonTextReader(reader))
+        {
+            players = serializer.Deserialize<List<Player>>(jsonReader);
+        }
+
+        return players;
     }
 }
 
