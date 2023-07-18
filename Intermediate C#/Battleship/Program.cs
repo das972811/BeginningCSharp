@@ -41,16 +41,14 @@ class Program
             )
         };
 
-        // var test = Random.GenerateRandomPoint(map);
-        // Console.WriteLine(test.X);
-        // Console.WriteLine(test.Y);
+        // var diego = new BasicPlayer(DiegoBattleships);
+        // var ignacio = new BasicPlayer(IgnacioBattleships);
 
-        var diego = new BasicPlayer(DiegoBattleships);
-        var ignacio = new BasicPlayer(IgnacioBattleships);
+        // Level level = new Level(diego, ignacio, map);
+        // level.Play();
 
-        Level level = new Level(diego, ignacio, map);
-        level.Play();
+        var test = new SetLocation(5);
 
-
+        test.AddBattleship("BasicBattleship");
     }
 }

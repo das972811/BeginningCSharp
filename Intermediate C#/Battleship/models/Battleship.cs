@@ -7,7 +7,7 @@ namespace Battleship.Models
         private readonly Position _position;
 
         public Guid ID => _id;
-        public abstract int Size { get; }
+        public virtual int Size { get; }
         public abstract int Health { get; protected set; }
 
         // public bool IsNeutralized { get => Health == 0; }
