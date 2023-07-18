@@ -6,11 +6,12 @@ class Level
 {
     private readonly BasicPlayer _player1;
     private readonly BasicPlayer _player2;
+    private readonly Map _map;
     private bool _roundIsOver = false;
 
-    public Level(BasicPlayer player1, BasicPlayer player2)
+    public Level(BasicPlayer player1, BasicPlayer player2, Map map)
     {
-        (_player1, _player2) = (player1, player2);
+        (_player1, _player2, _map) = (player1, player2, map);
     }
 
     public void Play()
