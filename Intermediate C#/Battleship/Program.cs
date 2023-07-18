@@ -24,19 +24,6 @@ class Program
                     }
                 )
             )
-            // new BasicBattleShip
-            // (
-            //     new Position
-            //     (
-            //         new Point[]
-            //         {
-            //             new Point(1, 1),
-            //             new Point(1, 2),
-            //             new Point(1, 3),
-            //             new Point(1, 4)
-            //         }
-            //     )
-            // )
         };
 
         IgnacioBattleships = new IBattleship[]
@@ -52,25 +39,19 @@ class Program
                     }
                 )
             )
-            // new BasicBattleShip
-            // (
-            //     new Position
-            //     (
-            //         new Point[]
-            //         {
-            //             new Point(6, 2),
-            //             new Point(6, 3),
-            //             new Point(6, 4),
-            //             new Point(6, 5),
-            //         }
-            //     )
-            // )
         };
 
-        Player diego = new Player(DiegoBattleships);
-        Player ignacio = new Player(IgnacioBattleships);
+        var test = Random.GenerateRandomPoint(map);
 
-        Level level = new Level(diego, ignacio);
-        level.Play();
+        Console.WriteLine(test.X);
+        Console.WriteLine(test.Y);
+
+        // var diego = new BasicPlayer(DiegoBattleships);
+        // var ignacio = new BasicPlayer(IgnacioBattleships);
+
+        // Level level = new Level(diego, ignacio);
+        // level.Play();
+
+
     }
 }

@@ -1,10 +1,10 @@
 namespace Battleship.Models;
 
-class Player
+class BasicPlayer : IPlayer
 {
     public IBattleship[] Battleships { get; }
-    public Point InputtedPoint { get; private set; } = new Point();
-    public Player(IBattleship[] battleships) => Battleships = battleships;
+    public Point InputtedPoint { get; protected set; } = new Point();
+    public BasicPlayer(IBattleship[] battleships) => Battleships = battleships;
 
     public bool Attack(Point point, IBattleship[] battleships)
     {
@@ -48,7 +48,7 @@ class Player
         return sinkingShip == Battleships.Length;
     }
 
-    public void GetUserPoint()
+    public virtual void GetPoint()
     {
         int x, y;
 
