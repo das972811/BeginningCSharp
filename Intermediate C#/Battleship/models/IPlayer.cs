@@ -7,4 +7,5 @@ interface IPlayer
     bool Attack(Point point, IBattleship[] battleships);
     bool HasLose();
     void GetPoint();
+    void ViewPreviousAttacks();
 }

@@ -2,12 +2,17 @@ namespace Battleship.Models;
 
 class BasicPlayer : IPlayer
 {
+    private readonly History _history = new History();
+
     public IBattleship[] Battleships { get; }
     public Point InputtedPoint { get; protected set; } = new Point();
+
     public BasicPlayer(IBattleship[] battleships) => Battleships = battleships;
 
     public bool Attack(Point point, IBattleship[] battleships)
     {
+        bool hasHitBattleship = false;
+
         for (int i = 0; i < battleships.Length; i++)
         {
             IBattleship battleship = battleships[i];
@@ -21,16 +26,21 @@ class BasicPlayer : IPlayer
             {
                 if (point.Equals(_point))
                 {
-                    Console.WriteLine("Hit a " + battleship);
+                    hasHitBattleship = true;
                     battleship.DecreaseHealth();
+
+                    RecordAttack(battleship, hasHitBattleship, point);
                     
-                    return true;
+                    Console.WriteLine("Hit a " + battleship);
+                    return hasHitBattleship;
                 }
             }
         }
 
+        RecordAttack(null, hasHitBattleship, point);
         Console.WriteLine("Missed");
-        return false;
+
+        return hasHitBattleship;
     }
 
     public bool HasLose()
@@ -61,5 +71,13 @@ class BasicPlayer : IPlayer
     
 
         InputtedPoint = new Point(x, y);
+    }
+
+    public virtual void ViewPreviousAttacks() => _history.ViewEntries();
+
+    protected virtual void RecordAttack(IBattleship? battleship, bool hasDoneDamage, Point attackPoint)
+    {
+        var entry = new Entry(battleship, hasDoneDamage, attackPoint);
+        _history.Add(entry);
     }
 }

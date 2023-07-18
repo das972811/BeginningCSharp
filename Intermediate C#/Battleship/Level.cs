@@ -26,6 +26,8 @@ class Level
             _player2.GetPoint();
             _player2.Attack(_player2.InputtedPoint, _player1.Battleships);
 
+            _player1.ViewPreviousAttacks();
+
             if (_player1.HasLose() && _player2.HasLose())
             {
                 Console.WriteLine("It a draw");
