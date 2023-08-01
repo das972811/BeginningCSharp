@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Net;
 using Newtonsoft.Json;
 
 namespace SoccerStats;
@@ -7,23 +8,25 @@ class Program
 {
     static void Main(string[] args)
     {
-        string currentDirectory =  Directory.GetCurrentDirectory();
-        DirectoryInfo directory = new DirectoryInfo(currentDirectory);
-        var fileName = Path.Combine(directory.FullName, "SoccerGameResults.csv");
-        var fileContents = ReadSoccerResults(fileName);
+        // string currentDirectory =  Directory.GetCurrentDirectory();
+        // DirectoryInfo directory = new DirectoryInfo(currentDirectory);
+        // var fileName = Path.Combine(directory.FullName, "SoccerGameResults.csv");
+        // var fileContents = ReadSoccerResults(fileName);
 
-        fileName = Path.Combine(directory.FullName, "players.json");
+        // fileName = Path.Combine(directory.FullName, "players.json");
 
-        var players = DeserializePlayers(fileName);
-        var topTenPlayers = GetTopTenPlayers(players);
+        // var players = DeserializePlayers(fileName);
+        // var topTenPlayers = GetTopTenPlayers(players);
 
-        foreach (var player in topTenPlayers)
-        {
-            Console.WriteLine("Name: " + player.FirstName + " PPG: " + player.PointsPerGame);
-        }
+        // foreach (var player in topTenPlayers)
+        // {
+        //     Console.WriteLine("Name: " + player.FirstName + " PPG: " + player.PointsPerGame);
+        // }
 
-        fileName = Path.Combine(directory.FullName, "topTen.json");
-        SerializePlayersToFile(topTenPlayers, fileName);
+        // fileName = Path.Combine(directory.FullName, "topTen.json");
+        // SerializePlayersToFile(topTenPlayers, fileName);
+
+        Console.WriteLine(GetGoolgeHomePage());
 
         // Console.WriteLine(fileContents);
     }
@@ -138,6 +141,20 @@ class Program
         using (var jsonWriter = new JsonTextWriter(writer))
         {
             serializer.Serialize(jsonWriter, players);
+        }
+    }
+
+    public static string GetGoolgeHomePage()
+    {
+        var webClient = new WebClient();
+
+        byte[] googleHome = webClient.DownloadData("https://www.google.com");
+        // Stream stream = new Stream();
+
+        using (var stream = new MemoryStream(googleHome))
+        using (var reader = new StreamReader(stream))
+        {
+            return reader.ReadToEnd();
         }
     }
 }
