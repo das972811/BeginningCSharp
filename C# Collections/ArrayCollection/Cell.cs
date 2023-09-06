@@ -2,5 +2,5 @@ namespace ArrayCollection;
 
 public class Cell
 {
-    // public string Contents { get; set; }
+    public string Contents { get; set; } = null!;
 }
