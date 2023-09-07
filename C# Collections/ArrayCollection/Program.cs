@@ -4,6 +4,29 @@ public class Program
 {
     public static void Main(string[] args)
     {
+        List<Student> students = new() {
+            new Student() { Name = "Sally", GradeLevel = 3},
+            new Student() { Name = "Bob", GradeLevel = 3},
+            new Student() { Name = "Sally", GradeLevel = 2}
+        };
+
+        students.Sort();
+
+        foreach(Student student in students)
+        {
+            Console.WriteLine($"{student.Name} is in grade {student.GradeLevel}");
+        }
+
+        // List<string> students2 = new(students);
+        // string[] studentsArray = students.ToArray();
+
+        // Console.WriteLine(students.Count);
+        // Console.WriteLine(students.Capacity);
+        
+    }
+
+    public void GenerateSheetWithMultiDimensionalArrays()
+    {
         Cell[,] sheets = new Cell[2, 2];
 
         for (int rowIndex = 0; rowIndex < sheets.GetLength(0); rowIndex++)
