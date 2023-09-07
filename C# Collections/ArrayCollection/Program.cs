@@ -12,17 +12,21 @@ public class Program
 
         students.Sort();
 
+        Student newStudent = new() { Name = "Joe", GradeLevel = 2 };
+
+        int index = students.BinarySearch(newStudent);
+
+        if (index < 0)
+        {
+            // Bitwise compliment
+            // ~index
+            students.Insert((-index) - 1, newStudent);
+        }
+
         foreach(Student student in students)
         {
             Console.WriteLine($"{student.Name} is in grade {student.GradeLevel}");
         }
-
-        // List<string> students2 = new(students);
-        // string[] studentsArray = students.ToArray();
-
-        // Console.WriteLine(students.Count);
-        // Console.WriteLine(students.Capacity);
-        
     }
 
     public void GenerateSheetWithMultiDimensionalArrays()
